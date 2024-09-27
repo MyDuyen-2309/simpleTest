@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "C:\ChromeDriver\testng-1.0.dtd">
+<suite name="Simple Test Suite">
+    <test name="Addition Test">
+        <classes>
+            <!-- Đường dẫn đầy đủ của class cần chạy -->
+            <class name="simple.tetst"/>
+        </classes>
+    </test>
+</suite>
