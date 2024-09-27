@@ -25,6 +25,20 @@
             <artifactId>allure-testng</artifactId>
             <version>2.20.1</version>
         </dependency>
+
+        <!-- SLF4J API -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version> <!-- Bạn có thể kiểm tra phiên bản mới nhất -->
+        </dependency>
+
+        <!-- Logback Classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version> <!-- Bạn có thể kiểm tra phiên bản mới nhất -->
+        </dependency>
     </dependencies>
 
     <build>
@@ -36,8 +50,7 @@
                 <version>3.1.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 
