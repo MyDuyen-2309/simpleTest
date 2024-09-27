@@ -32,8 +32,10 @@ jobs:
     - name: Generate Allure report
       run: mvn allure:report
 
-    - name: Upload Allure Report
+    - name: Upload Allure Report and Results
       uses: actions/upload-artifact@v3
       with:
-        name: allure-report
-        path: target/allure-results # Đường dẫn đúng đến thư mục chứa kết quả
+        name: allure-artifacts
+        path: |
+          target/allure-results
+          allure-report # Đường dẫn tới thư mục báo cáo Allure
