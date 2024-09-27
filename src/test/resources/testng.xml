@@ -4,7 +4,7 @@
     <test name="Addition Test">
         <classes>
             <!-- Đường dẫn đầy đủ của class cần chạy -->
-            <class name="simple.Test"/> <!-- Sửa lại đường dẫn class -->
+            <class name="simple.tetst"/> <!-- Sửa lại đường dẫn class -->
         </classes>
     </test>
 </suite>
