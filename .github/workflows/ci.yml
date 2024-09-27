@@ -11,22 +11,23 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up JDK
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v2
       with:
-        java-version: '17' 
-        distribution: 'temurin' 
+        java-version: '17' # Hoặc phiên bản Java mà bạn sử dụng
+        distribution: 'temurin' # Hoặc 'adopt' nếu bạn muốn
 
     - name: Build with Maven
       run: mvn clean test
 
     - name: Install Allure
       run: |
+        # Tải về phiên bản mới nhất của Allure
         wget $(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | grep "browser_download_url" | grep "allure-.*zip" | cut -d '"' -f 4) -O allure.zip
         unzip allure.zip -d allure
-        echo "$GITHUB_WORKSPACE/allure/allure-*/bin" >> $GITHUB_PATH
+        sudo ln -s $GITHUB_WORKSPACE/allure/allure-*/*/bin/allure /usr/local/bin/allure
 
     - name: Generate Allure report
       run: mvn allure:report
