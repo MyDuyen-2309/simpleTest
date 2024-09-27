@@ -21,9 +21,10 @@ jobs:
 
     - name: Install Allure
       run: |
-        wget https://github.com/allure-framework/allure2/releases/download/2.30.0/allure-2.30.0.zip
-        unzip allure-2.30.0.zip -d allure
-        sudo ln -s $GITHUB_WORKSPACE/allure/allure-2.30.0/bin/allure /usr/local/bin/allure
+        # Tải về phiên bản mới nhất của Allure
+        wget $(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | grep "browser_download_url" | grep "allure-.*zip" | cut -d '"' -f 4) -O allure.zip
+        unzip allure.zip -d allure
+        sudo ln -s $GITHUB_WORKSPACE/allure/allure-*/*/bin/allure /usr/local/bin/allure
 
     - name: Generate Allure report
       run: mvn allure:report
