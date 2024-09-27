@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -8,29 +11,25 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up JDK
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v3
       with:
-        java-version: '17' # Hoặc phiên bản Java mà bạn sử dụng
-        distribution: 'temurin' # Hoặc 'adopt' nếu bạn muốn
+        java-version: '17' 
+        distribution: 'temurin' 
 
     - name: Build with Maven
       run: mvn clean test
 
     - name: Install Allure
       run: |
-        # Tải về phiên bản mới nhất của Allure
         wget $(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | grep "browser_download_url" | grep "allure-.*zip" | cut -d '"' -f 4) -O allure.zip
         unzip allure.zip -d allure
-        sudo ln -s $GITHUB_WORKSPACE/allure/allure-*/*/bin/allure /usr/local/bin/allure
+        echo "$GITHUB_WORKSPACE/allure/allure-*/bin" >> $GITHUB_PATH
 
     - name: Generate Allure report
       run: mvn allure:report
-
-    - name: Serve Allure report
-      run: mvn allure:serve
 
     - name: Upload Allure Report
       uses: actions/upload-artifact@v3
