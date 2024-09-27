@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "D:\AUTO TEST\simple\src\test\resources\testng-1.0.dtd">
+
 <suite name="Simple Test Suite">
     <test name="Addition Test">
         <classes>
