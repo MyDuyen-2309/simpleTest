@@ -1,9 +1,10 @@
-<!DOCTYPE suite SYSTEM "C:\ChromeDriver\testng-1.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "D:\AUTO TEST\simple\src\test\resources\testng-1.0.dtd">
 <suite name="Simple Test Suite">
     <test name="Addition Test">
         <classes>
             <!-- Đường dẫn đầy đủ của class cần chạy -->
-            <class name="simple.tetst"/>
+            <class name="simple.Test"/> <!-- Sửa lại đường dẫn class -->
         </classes>
     </test>
 </suite>
