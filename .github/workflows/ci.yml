@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +21,9 @@ jobs:
 
     - name: Install Allure
       run: |
-        wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.17.0.zip
-        unzip allure-2.17.0.zip -d /opt
-        sudo ln -s /opt/allure-2.17.0/bin/allure /usr/bin/allure
+        wget https://github.com/allure-framework/allure2/releases/download/2.30.0/allure-2.30.0.zip
+        unzip allure-2.30.0.zip -d allure
+        sudo ln -s $GITHUB_WORKSPACE/allure/allure-2.30.0/bin/allure /usr/local/bin/allure
 
     - name: Generate Allure report
       run: mvn allure:report
