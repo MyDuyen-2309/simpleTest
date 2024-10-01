@@ -38,8 +38,14 @@ jobs:
           echo "Generating Allure report..."
           mvn allure:report
           echo "Allure report generated."
-          echo "Listing allure results:"
-          ls target/allure-results
+          echo "Checking allure results directory:"
+          if [ -d target/allure-results ]; then
+            echo "Allure results directory exists."
+            ls target/allure-results
+          else
+            echo "Allure results directory does not exist."
+            exit 1
+          fi
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v3
